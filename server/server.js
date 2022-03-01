@@ -14,7 +14,7 @@ const startServer = async () => {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
-    context: authMiddleware
+    //context: authMiddleware
   });
 
   // Start the Apollo server
@@ -24,8 +24,11 @@ const startServer = async () => {
   server.applyMiddleware({ app });
 
   //log where we can go to test our GQL API
-  console.log(`Use GraphQL at http:localhost:${PORT}${server.graphqlPath}`);
+  console.log(`Use GraphQL at http:localhost:${PORT}${server.graphqlPath}`); 
 };
+
+// Initialize the Apollo server
+startServer();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
