@@ -7,7 +7,7 @@ const resolvers = {
             return Thought.find(params).sort({ createdAt: -1 });
         },
         
-        thought: async (parent, {_id }) => {
+        thought: async (parent, { _id }) => {
             return Thought.findOne({ _id });
         },
 
@@ -20,7 +20,7 @@ const resolvers = {
 
         user: async (parent, {username }) => {
             return User.findOne({ username })
-            .select('__v -password')
+            .select('-__v -password')
             .populate('friends')
             .populate('thoughts');
         },
